@@ -72,31 +72,23 @@ const gallery = document.querySelector('.gallery');
 const createGalleryItem = ({ preview, original, description }) => {
   const galleryItem = document.createElement('li');
   galleryItem.classList.add('gallery-item');
-
-  const link = document.createElement('a');
+const link = document.createElement('a');
   link.classList.add('gallery-link');
   link.href = original;
-
-  const image = document.createElement('img');
+ const image = document.createElement('img');
   image.classList.add('gallery-image');
   image.src = preview;
   image.dataset.source = original;
   image.alt = description;
-
-  link.appendChild(image);
+link.appendChild(image);
   galleryItem.appendChild(link);
-
-  return galleryItem;
+return galleryItem;
 };
-
 const renderGallery = () => {
   const galleryItems = images.map(createGalleryItem);
   gallery.append(...galleryItems);
 };
-
 renderGallery();
-
-// Initialize SimpleLightbox
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: "alt",
   captionDelay: 250
